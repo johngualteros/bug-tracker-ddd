@@ -3,7 +3,9 @@ package com.john.hexagonal_architecture.user.infrastructure;
 import javax.persistence.*;
 
 @Entity
-public class UserEntity {
+@Table(name = "users")
+
+public final class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
