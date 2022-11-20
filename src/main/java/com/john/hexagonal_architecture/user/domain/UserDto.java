@@ -16,7 +16,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class UserDto {
+public final class UserDto {
 
     @NotNull
     private Long   id;
