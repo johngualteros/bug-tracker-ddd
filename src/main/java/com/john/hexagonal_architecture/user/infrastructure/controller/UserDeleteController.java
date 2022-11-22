@@ -2,12 +2,12 @@ package com.john.hexagonal_architecture.user.infrastructure.controller;
 
 import com.john.hexagonal_architecture.user.application.UserRepository;
 import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
+
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,25 +15,19 @@ import java.util.Optional;
 @AllArgsConstructor
 @RequestMapping("/api/v1/")
 
-public class UserGetController {
+public class UserDeleteController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/users")
-    public List<UserEntity> getAllUsers(){
-        return userRepository.findAll();
-    }
-
-    @GetMapping("/users/{id}")
-    public ResponseEntity<Optional<UserEntity>> getOneUser(@PathVariable Long id){
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<?> deleteUserById(@PathVariable Long id) {
 
         Optional<UserEntity> user = userRepository.findById(id);
 
-        if (user.isEmpty()){
-            return (ResponseEntity<Optional<UserEntity>>) ResponseEntity.notFound();
-        }
+        userRepository.deleteById(id);
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.status(202).body(user);
 
     }
+
 }
