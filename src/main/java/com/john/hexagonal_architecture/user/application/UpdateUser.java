@@ -23,7 +23,7 @@ public class UpdateUser {
 
         UserEntity convertedDtoToEntityUser = convertDtoToEntityUser.convertDtoToEntity(userDto);
 
-        Optional<UserEntity> findedUser    = getOneUserById.getOneUserById(id);
+        Optional<UserEntity> findedUser     = getOneUserById.getOneUserById(id);
 
         return findedUser;
 
