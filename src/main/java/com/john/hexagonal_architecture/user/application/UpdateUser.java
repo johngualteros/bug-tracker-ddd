@@ -14,7 +14,7 @@ public class UpdateUser {
 
     private final ConvertDtoToEntityUser convertDtoToEntityUser;
 
-    private final GetOneUserById         getOneUserById;
+    private final GetOneUserById         getOneUser;
 
     private final UserRepository         userRepository;
 
@@ -23,9 +23,21 @@ public class UpdateUser {
 
         UserEntity convertedDtoToEntityUser = convertDtoToEntityUser.convertDtoToEntity(userDto);
 
-        Optional<UserEntity> findedUser     = getOneUserById.getOneUserById(id);
+        Optional<UserEntity> foundUser      = getOneUser.getOneUserById(id);
 
-        return findedUser;
+        if(foundUser.isEmpty()){
+            return Optional.empty();
+        }
+
+        foundUser.get().setName(convertedDtoToEntityUser.getName());
+
+        foundUser.get().setEmail(convertedDtoToEntityUser.getEmail());
+
+        foundUser.get().setPhoto(convertedDtoToEntityUser.getPhoto());
+
+        foundUser.get().setPassword(convertedDtoToEntityUser.getPassword());
+
+        return foundUser;
 
     }
 
