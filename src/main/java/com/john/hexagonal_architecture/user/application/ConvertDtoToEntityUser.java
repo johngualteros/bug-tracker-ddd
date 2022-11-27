@@ -2,7 +2,9 @@ package com.john.hexagonal_architecture.user.application;
 
 import com.john.hexagonal_architecture.user.domain.UserDto;
 import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class ConvertDtoToEntityUser {
 
     public UserEntity convertDtoToEntity(UserDto userDto) {
