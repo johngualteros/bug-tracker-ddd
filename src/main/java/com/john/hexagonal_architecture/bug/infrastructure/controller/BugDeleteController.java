@@ -6,22 +6,25 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin(value = "*")
 @AllArgsConstructor
 @RequestMapping("/api/v1/")
 
-public class BugPostController {
+public class BugDeleteController {
 
     private final BugRepository bugRepository;
 
-    @PostMapping("/bugs")
-    public ResponseEntity<BugEntity> saveBug(@RequestBody BugEntity bugEntity){
+    @DeleteMapping("/bugs/{id}")
+    public ResponseEntity<?> deleteBugById(@PathVariable Long id) {
 
-        BugEntity bug = bugRepository.save(bugEntity);
+        Optional<BugEntity> bug = bugRepository.findById(id);
 
-        return ResponseEntity.status(200).body(bug);
+        bugRepository.deleteById(id);
+
+        return ResponseEntity.status(202).body(bug);
 
     }
-
 }

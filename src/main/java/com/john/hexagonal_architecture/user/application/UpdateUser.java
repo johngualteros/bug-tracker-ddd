@@ -16,8 +16,6 @@ public class UpdateUser {
 
     private final GetOneUserById         getOneUser;
 
-    private final UserRepository         userRepository;
-
 
     public Optional<UserEntity> updateUser(Long id, UserDto userDto) {
 
