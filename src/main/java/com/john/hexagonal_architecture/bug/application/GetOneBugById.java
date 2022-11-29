@@ -13,7 +13,7 @@ public class GetOneBugById {
 
     private final BugRepository bugRepository;
 
-    public Optional<BugEntity> getOneBugById(Long id){
+    public Optional<BugEntity> getOneBug(Long id){
 
         Optional<BugEntity> bug = bugRepository.findById(id);
 
