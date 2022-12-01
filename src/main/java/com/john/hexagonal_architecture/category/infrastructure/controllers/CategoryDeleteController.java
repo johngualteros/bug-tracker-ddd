@@ -4,7 +4,6 @@ import com.john.hexagonal_architecture.category.application.CategoryRepository;
 import com.john.hexagonal_architecture.category.application.GetOneCategoryById;
 import com.john.hexagonal_architecture.category.infrastructure.CategoryEntity;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
