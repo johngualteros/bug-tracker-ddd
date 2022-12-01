@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface GetUsersNotLikeEmailGmail extends JpaRepository<UserEntity, Long> {
 
-    @Query(name="SELECT u FROM user u WHERE u.email NOT LIKE '%gmail%'", nativeQuery = true)
+    @Query(value="SELECT u FROM user u WHERE u.email NOT LIKE '%gmail%'", nativeQuery = true)
     List<UserEntity> getAllUserWithNotGmailEmail();
 
 }
