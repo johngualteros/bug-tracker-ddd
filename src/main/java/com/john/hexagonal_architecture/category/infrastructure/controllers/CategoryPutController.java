@@ -28,11 +28,11 @@ public class CategoryPutController {
 
         if(categoryUpdated.isEmpty()) return null;
 
-        CategoryEntity categoryCastedToClass     = CategoryEntity.class.cast(categoryUpdated);
+        CategoryEntity categoryForSave     = categoryUpdated.get();
 
-        categoryRepository.save(categoryCastedToClass);
+        categoryRepository.save(categoryForSave);
 
-        return categoryCastedToClass;
+        return categoryForSave;
 
     }
 

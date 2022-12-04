@@ -29,7 +29,7 @@ public class UserPostController {
         UserEntity user = convertDtoToModelUser(userDto);
 
         Optional<UserEntity> userAlreadyExists = validateIfEmailAlreadyExists
-                .validateIfEmailAlreadyRegistered(user.getEmail());
+               .validateIfEmailAlreadyRegistered(user.getEmail());
 
         if(userAlreadyExists.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists!");

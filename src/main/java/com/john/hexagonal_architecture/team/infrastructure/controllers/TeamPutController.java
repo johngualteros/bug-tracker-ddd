@@ -26,11 +26,11 @@ public class TeamPutController {
 
         if(teamUpdated.isEmpty()) return null;
 
-        TeamEntity teamCastedToClass     = TeamEntity.class.cast(teamUpdated);
+        TeamEntity teamForSave     = teamUpdated.get();
 
-        teamRepository.save(teamCastedToClass);
+        teamRepository.save(teamForSave);
 
-        return teamCastedToClass;
+        return teamForSave;
 
     }
 

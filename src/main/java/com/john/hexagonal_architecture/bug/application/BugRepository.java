@@ -9,16 +9,17 @@ import java.util.UUID;
 
 public interface BugRepository extends JpaRepository<BugEntity, Long> {
 
-    @Query(value = "SELECT b FROM bug b WHERE b.status = 'Open'", nativeQuery = true)
+    @Query(value = "SELECT * FROM bug b WHERE b.status = 'Open'", nativeQuery = true)
     List<BugEntity> getBugsByOpenStatus();
 
-    @Query(value = "SELECT b FROM bug b WHERE b.status = 'In Progress'", nativeQuery = true)
+    @Query(value = "SELECT * FROM bug b WHERE b.status = 'In Progress'", nativeQuery = true)
+
     List<BugEntity> getBugsByInProgressStatus();
 
-    @Query(value = "SELECT b FROM bug b WHERE b.status = 'Reviewing'", nativeQuery = true)
+    @Query(value = "SELECT * FROM bug b WHERE b.status = 'Reviewing'", nativeQuery = true)
     List<BugEntity> getBugsByReviewingStatus();
 
-    @Query(value = "SELECT b FROM bug b WHERE b.status = 'Solved'", nativeQuery = true)
+    @Query(value = "SELECT * FROM bug b WHERE b.status = 'Solved'", nativeQuery = true)
     List<BugEntity> getBugsBySolvedStatus();
 
 
