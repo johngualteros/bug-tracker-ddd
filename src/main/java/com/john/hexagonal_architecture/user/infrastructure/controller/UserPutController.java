@@ -27,9 +27,9 @@ public class UserPutController {
 
         if (userUpdated.isPresent()){
 
-            UserEntity castedEntityUser  = UserEntity.class.cast(userUpdated);
+            UserEntity userForSave  = userUpdated.get();
 
-            return userRepository.save(castedEntityUser);
+            return userRepository.save(userForSave);
 
         }
 

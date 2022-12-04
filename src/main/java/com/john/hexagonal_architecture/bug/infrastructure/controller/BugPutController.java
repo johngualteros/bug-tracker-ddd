@@ -26,9 +26,9 @@ public class BugPutController {
 
         if (bugUpdated.isPresent()){
 
-            BugEntity castedEntityBug  = BugEntity.class.cast(bugUpdated);
+            BugEntity bugForSave  = bugUpdated.get();
 
-            return bugRepository.save(castedEntityBug);
+            return bugRepository.save(bugForSave);
 
         }
 
