@@ -1,5 +1,6 @@
 package com.john.hexagonal_architecture.category.infrastructure;
 
+import com.john.hexagonal_architecture.team.infrastructure.TeamEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,14 @@ public class CategoryEntity {
 
     @Column
     private String color;
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    /*
+    CascadeType.MERGE: propagates the merge operation from a parent to a child entity.
+
+    FetchType.EAGER : fetch immediately
+     */
+    @JoinColumn(nullable = false, referencedColumnName = "id", name = "team_id")
+    private TeamEntity team;
 
 }

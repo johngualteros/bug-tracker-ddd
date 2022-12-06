@@ -16,6 +16,14 @@ public class CategoryPostController {
     private final CategoryRepository categoryRepository;
 
 
+    /*
+    "name": "solved",
+    "description": "this category is for save the bugs already solved",
+    "color": "rgb(255,0,10)",
+    "team": {
+        "id": 1
+    }
+     */
     @PostMapping("/categories")
     public ResponseEntity<CategoryEntity> saveCategory(@RequestBody CategoryEntity category){
 
