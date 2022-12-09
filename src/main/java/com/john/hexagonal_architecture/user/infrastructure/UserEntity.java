@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public final class UserEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,5 +31,6 @@ public final class UserEntity {
 
     @Column(nullable = false)
     private String password;
+
 
 }
