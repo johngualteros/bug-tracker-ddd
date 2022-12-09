@@ -1,6 +1,7 @@
 package com.john.hexagonal_architecture.team.infrastructure;
 
 import com.john.hexagonal_architecture.category.infrastructure.CategoryEntity;
+import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,5 +33,7 @@ public class TeamEntity {
     @Column
     private String color;
 
-
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, referencedColumnName = "id", name = "user_id")
+    private UserEntity user;
 }

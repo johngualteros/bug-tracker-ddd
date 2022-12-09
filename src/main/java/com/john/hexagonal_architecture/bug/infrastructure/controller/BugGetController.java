@@ -75,9 +75,10 @@ public class BugGetController {
 
     }
 
-    @GetMapping("/bugs/priority/{priority}")
-    public List<BugEntity> getBugsPriority(@PathVariable Long priority){
+    @GetMapping("/bugs/query")
+    public List<BugEntity> getBugsPriority(@RequestParam Long priority){
 
+        System.out.println(priority+"\n\n\n");
         return getBugsByPriority.getAllsBugsByPriority(priority);
 
     }

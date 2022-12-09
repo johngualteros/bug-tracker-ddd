@@ -19,9 +19,7 @@ public class GetBugsByPriority {
 
         List<BugEntity> bugs = bugRepository.findAll();
 
-        List<BugEntity> bugsResult = filterBugs(bugs, priority);
-
-        return bugsResult;
+        return filterBugs(bugs, priority);
 
     }
 
@@ -29,12 +27,10 @@ public class GetBugsByPriority {
 
         List<BugEntity> bugsFilteredByPriority = new ArrayList<>();
 
-        bugs.stream().filter(bug -> {
-            if(Objects.equals(bug.getPriority(), priority)){
-                bugsFilteredByPriority.add(bug);
-            }
-            return false;
-        });
+        bugs.stream()
+                .parallel()
+                .filter(bug -> Objects.equals(bug.getPriority(), priority))
+                .forEach(bugsFilteredByPriority::add);
 
         return bugsFilteredByPriority;
 
