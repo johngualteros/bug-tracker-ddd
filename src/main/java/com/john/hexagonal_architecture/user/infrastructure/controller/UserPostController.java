@@ -7,6 +7,7 @@ import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,6 +22,8 @@ public class UserPostController {
 
     private final UserRepository               userRepository;
 
+    private final PasswordEncoder              passwordEncoder;
+
     private final ValidateIfEmailAlreadyExists validateIfEmailAlreadyExists;
 
     @PostMapping("/users")
@@ -34,6 +37,8 @@ public class UserPostController {
         if(userAlreadyExists.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists!");
         }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
 

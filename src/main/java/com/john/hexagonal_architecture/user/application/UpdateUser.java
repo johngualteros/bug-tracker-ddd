@@ -3,6 +3,7 @@ package com.john.hexagonal_architecture.user.application;
 import com.john.hexagonal_architecture.user.domain.UserDto;
 import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ public class UpdateUser {
 
     private final GetOneUserById         getOneUser;
 
+    private final PasswordEncoder        passwordEncoder;
 
     public Optional<UserEntity> updateUser(Long id, UserDto userDto) {
 
@@ -33,7 +35,7 @@ public class UpdateUser {
 
         foundUser.get().setPhoto(convertedDtoToEntityUser.getPhoto());
 
-        foundUser.get().setPassword(convertedDtoToEntityUser.getPassword());
+        foundUser.get().setPassword(passwordEncoder.encode(convertedDtoToEntityUser.getPassword()));
 
         return foundUser;
 
