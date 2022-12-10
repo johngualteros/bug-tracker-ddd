@@ -13,9 +13,9 @@ public class ValidateUserLogin {
 
     private final UserRepository userRepository;
 
-    public Optional<UserEntity> validateUserLoginWithUsernameAndPassword(String name, String password){
+    public Optional<UserEntity> validateUserLoginWithUsername(String name){
 
-        return userRepository.loginMethodWithUsernameAndPassword(name, password);
+        return userRepository.loginMethodWithUsername(name);
 
     }
 

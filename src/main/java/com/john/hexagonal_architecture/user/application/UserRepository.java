@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query(value = "SELECT * FROM users u WHERE u.email = ?1", nativeQuery = true)
     Optional<UserEntity> validateEmailExists(String email);
 
-    @Query(value = "SELECT * FROM users u WHERE u.name = ?1 AND u.password = ?2", nativeQuery = true)
-    Optional<UserEntity> loginMethodWithUsernameAndPassword(String name, String password);
+    @Query(value = "SELECT * FROM users u WHERE u.name = ?1", nativeQuery = true)
+    Optional<UserEntity> loginMethodWithUsername(String name);
 
 }
