@@ -32,5 +32,10 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
-
+    public UserEntity(String name, String email, String photo, String password) {
+        this.name = name;
+        this.email = email;
+        this.photo = photo;
+        this.password = password;
+    }
 }
