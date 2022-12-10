@@ -2,6 +2,7 @@ package com.john.hexagonal_architecture.user.infrastructure.controller;
 
 import com.john.hexagonal_architecture.user.application.GetUsersNotLikeEmailGmail;
 import com.john.hexagonal_architecture.user.application.UserRepository;
+import com.john.hexagonal_architecture.user.application.ValidateUserLogin;
 import com.john.hexagonal_architecture.user.infrastructure.UserEntity;
 import lombok.AllArgsConstructor;
 
@@ -18,9 +19,11 @@ import java.util.Optional;
 
 public class UserGetController {
 
-    private final UserRepository userRepository;
+    private final UserRepository            userRepository;
 
     private final GetUsersNotLikeEmailGmail userEmailRepository;
+
+    private final ValidateUserLogin         validateUserLogin;
 
     @GetMapping("/users")
     public List<UserEntity> getAllUsers(){
@@ -43,5 +46,12 @@ public class UserGetController {
     @GetMapping("/usersNotGmail")
     public List<UserEntity> getAllUser(){
         return userEmailRepository.getAllUserWithNotGmailEmail();
+    }
+
+    @GetMapping("/searchUser/{username}")
+    public Optional<UserEntity> getUserByUsername(@PathVariable String username){
+
+        return validateUserLogin.validateUserLoginWithUsername(username);
+
     }
 }
