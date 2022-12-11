@@ -35,6 +35,7 @@ public class TokenManager implements Serializable {
     }
 
     public String generateJwtToken(UserDetails userDetails) throws UnsupportedEncodingException {
+        //A map contains values on the basis of key, i.e. key and value pair.
         Map<String, Object> claims = new HashMap<>();
         return Jwts
                 .builder()
