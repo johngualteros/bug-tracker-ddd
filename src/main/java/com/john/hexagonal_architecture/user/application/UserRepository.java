@@ -17,4 +17,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query(value = "SELECT * FROM users u WHERE u.name = ?1", nativeQuery = true)
     Optional<UserEntity> loginMethodWithUsername(String name);
 
+
 }
