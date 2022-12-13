@@ -54,8 +54,6 @@ public class UserPostController {
 
         user.setEmail(userDto.getEmail());
 
-        user.setPhoto(userDto.getPhoto());
-
         user.setPassword( userDto.getPassword());
 
         return user;

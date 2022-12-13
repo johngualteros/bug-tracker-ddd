@@ -33,8 +33,6 @@ public class UpdateUser {
 
         foundUser.get().setEmail(convertedDtoToEntityUser.getEmail());
 
-        foundUser.get().setPhoto(convertedDtoToEntityUser.getPhoto());
-
         foundUser.get().setPassword(passwordEncoder.encode(convertedDtoToEntityUser.getPassword()));
 
         return foundUser;

@@ -45,7 +45,6 @@ class UserRepositoryTest {
 
         user.setName("johngualterosgarcia");
         user.setEmail("john@gmail.com");
-        user.setPhoto("no-content");
         user.setPassword(passwordEncoder.encode("example_password"));
         user.setId(1L);
 
