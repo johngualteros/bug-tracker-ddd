@@ -33,8 +33,6 @@ public final class UserDto {
     @NotEmpty
     private String email;
 
-    private String photo;
-
     @NotEmpty
     private String password;
 

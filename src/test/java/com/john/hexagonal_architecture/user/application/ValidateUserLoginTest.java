@@ -22,10 +22,12 @@ import static org.mockito.Mockito.*;
 
 class ValidateUserLoginTest {
 
+    @Autowired
     @MockBean
     private UserRepository userRepository;
 
-    @InjectMocks
+    @Autowired
+    @MockBean
     private ValidateUserLogin validateUserLogin;
 
     @Autowired
@@ -43,7 +45,6 @@ class ValidateUserLoginTest {
 
         user.setName("johngualterosgarcia");
         user.setEmail("john@gmail.com");
-        user.setPhoto("no-content");
         user.setPassword(passwordEncoder.encode("example_password"));
         user.setId(1L);
 
@@ -52,8 +53,12 @@ class ValidateUserLoginTest {
     @Test
     void validateUserLoginWithUsername() {
 
-        when(validateUserLogin.validateUserLoginWithUsername("johngualterosgarcia"))
-                .thenReturn(Optional.ofNullable(user));
+        Optional<UserEntity> userFound = validateUserLogin.validateUserLoginWithUsername(user.getName());
+
+        boolean existsUser = userFound.isPresent();
+
+        when(existsUser).thenReturn(true);
+
 
     }
 }
